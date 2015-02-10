@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 18:57:58 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/05 19:03:42 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/09 01:56:14 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char			**ft_cpystab(char **tab, char *val)
 	}
 	if (val)
 		new_tab[i] = ft_strdup(val);
-	new_tab[i + (val ? 1 : 0)] = ft_strnew(1);
 	new_tab[i + (val ? 1 : 0)] = NULL;
 	return (new_tab);
 }
