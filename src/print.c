@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 21:30:59 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 05:47:24 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/10 19:47:24 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void			print_tab(int *st, t_char size, char *msg, t_char debug)
 		ft_putstr(", ");
 		c++;
 	}
-	ft_putendl("\n");
+	ft_putendl("");
 }
 
-void		print_move(t_char moves, t_char dbg)
+void			print_move(t_char moves, t_char dbg)
 {
 	if (moves == 0)
 		dbg < QUIET_COLOR ? ft_putstr("sa ") : ft_putstr_clr("sa ", "r");
@@ -59,20 +59,57 @@ void		print_move(t_char moves, t_char dbg)
 		dbg < QUIET_COLOR ? ft_putstr("rrr ") : ft_putstr_clr("rrr ", "r");
 }
 
-t_char			print_moves(t_char *moves, t_char dbg)
+static t_char	print_verbose(t_char *moves, t_env *e, size_t i)
+{
+	t_char		*swap;
+
+	swap = moves;
+	while (*moves != STOP)
+	{
+		move(*moves, e);
+		print_move(*moves, e->debug);
+		print_tab(e->stack_a, e->size_a, "\nStack A: ", e->debug);
+		print_tab(e->stack_b, e->size_b, "Stack B: ", e->debug);
+		ft_putendl("");
+		moves++;
+	}
+	moves = swap;
+	e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
+	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :\
+		ft_putstr_clr(" moves: ", "y");
+	while (*moves != STOP)
+	{
+		print_move(*moves, e->debug);
+		moves++;
+	}
+	ft_putendl("\n");
+	return (TRUE);
+}
+
+t_char			print_moves(t_char *moves, t_env *e)
 {
 	size_t		i;
 
 	i = 0;
 	while (moves[i] != STOP)
 		i++;
-	dbg < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
-	dbg < QUIET_COLOR ? ft_putstr(" moves: ") : ft_putstr_clr(" moves: ", "y");
+	if (e->debug == VERBO_WHITE || e->debug == VERBO_COLOR)
+		return (print_verbose(moves, e, i));
+	if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
+		ft_putendl("");
+	e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
+	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :\
+		ft_putstr_clr(" moves: ", "y");
 	while (*moves != STOP)
 	{
-		print_move(*moves, dbg);
+		print_move(*moves, e->debug);
 		moves++;
 	}
 	ft_putendl("\n");
+	if (e->debug != DEBUG_WHITE && e->debug != DEBUG_COLOR)
+	{
+		print_tab(e->stack_a, e->size_a, "Stack A: ", e->debug);
+		print_tab(e->stack_b, e->size_b, "Stack B: ", e->debug);
+	}
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 23:11:02 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 07:14:33 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/10 18:28:37 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 static void		swap(int *tab, t_char size)
 {
-//	DEBUG;	//debug
 	int			swap;
 
 	if (size < 2)
@@ -30,7 +29,6 @@ static void		swap(int *tab, t_char size)
 
 static void		push(t_env *e, t_char am_i_a)
 {
-//	DEBUG;	//debug
 	if (!(am_i_a ? e->size_b : e->size_a))
 		return ;
 	if (am_i_a)
@@ -49,7 +47,6 @@ static void		push(t_env *e, t_char am_i_a)
 
 static void		rot(int *tab, t_char size)
 {
-//	DEBUG;	//debug
 	int			swap;
 
 	if (size < 2)
@@ -58,14 +55,13 @@ static void		rot(int *tab, t_char size)
 	while (size > 1)
 	{
 		tab[size - 1] = tab[size - 2];
-		size --;
+		size--;
 	}
 	tab[0] = swap;
 }
 
 static void		rev(int *tab, t_char size)
 {
-//	DEBUG;	//debug
 	int			swap;
 	t_char		i;
 

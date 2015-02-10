@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/10 01:58:30 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 07:32:07 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/10 19:23:21 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,20 @@ static t_char	is_solved(int *stack_a, t_char size_b)
 
 static void		launch_moves(t_char *moves, t_env *e)
 {
-//	if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
-//	{
-//		ft_debugstr("Moves", "Try");
-//		print_tab(e->stack_a, e->size_a, "Stack S: ", e->debug);
-//	}
 	cpy_itab(e->stack_s, e->stack_a, e->size_max);
 	e->size_a = e->size_max;
 	e->size_b = 0;
 	while (*moves != STOP)
 	{
 		move(*moves, e);
-//		if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
-//		{
-//			print_move(*moves, e->debug);
-//			ft_putendl("");
-//		}
+		if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
+		{
+			ft_putendl("");
+			print_move(*moves, e->debug);
+			ft_putendl("");
+			print_tab(e->stack_a, e->size_a, "Stack A: ", e->debug);
+			print_tab(e->stack_b, e->size_b, "Stack B: ", e->debug);
+		}
 		moves++;
 	}
 }
@@ -70,9 +68,15 @@ static t_char	brute_loop(t_char len, t_char *moves, t_env *e)
 {
 	t_char		i;
 
-	i = 0;	
+	i = 0;
 	while (i < len)
 	{
+		if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
+		{
+			ft_putendl("");
+			ft_debugstr("New", "Move");
+			print_tab(e->stack_s, e->size_max, "Stack S: ", e->debug);
+		}
 		launch_moves(moves, e);
 		if (is_solved(e->stack_a, e->size_b))
 			return (TRUE);
@@ -87,19 +91,21 @@ static t_char	brute_loop(t_char len, t_char *moves, t_env *e)
 	return (FALSE);
 }
 
-t_char			algo(t_env *e)
+t_char			brute(t_env *e)
 {
 	t_char		moves[MAX_MOVES];
 	t_char		len;
 
 	len = 0;
 	ft_bzero((void *)moves, MAX_MOVES);
+	if (is_solved(e->stack_a, e->size_b))
+		return (TRUE);
 	while (++len < STOP_BRUTE)
 	{
 		ft_bzero((void *)moves, len);
 		moves[len] = STOP;
 		if (brute_loop(len, moves, e))
-			return (print_moves(moves, e->debug));
+			return (print_moves(moves, e));
 	}
 	return (FALSE);
 }

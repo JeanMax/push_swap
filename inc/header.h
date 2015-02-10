@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 07:20:13 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/10 19:49:30 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define HEADER_H
 # define TRUE 1
 # define FALSE 0
-# define STOP_BRUTE 9
+# define STOP_BRUTE 8
 # define MAX_MOVES 512
 # define QUIET_WHITE 0
 # define VERBO_WHITE 1
@@ -50,14 +50,13 @@
 */
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
-# include <unistd.h>  //debug
 
 /*
 ** struct && typedef
 */
 typedef unsigned char	t_char;
 typedef struct s_env	t_env;
-struct	s_env
+struct		s_env
 {
 	int		*stack_a;
 	int		*stack_b;
@@ -73,10 +72,10 @@ struct	s_env
 */
 void		error(char error, char *msg);
 void		print_tab(int *st, t_char size, char *msg, t_char debug);
-t_char		print_moves(t_char *moves, t_char debug);
+t_char		print_moves(t_char *moves, t_env *e);
 void		print_move(t_char moves, t_char dbg);
 void		move(t_char move, t_env *e);
-t_char		algo(t_env *e);
+t_char		brute(t_env *e);
 void		cpy_itab(int *src, int *dest, t_char len);
 
 #endif

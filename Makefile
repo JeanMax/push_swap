@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/10 07:31:50 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/10 18:30:19 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -35,11 +35,11 @@ all:
 	@$(MAKE) $(NAME)
 
 $(NAME): $(SRCO) $(LIB) $(INC)
-	$(CC) $(CFLAGS) $(SRCO) $(LIB) -o $@
+	@$(CC) $(CFLAGS) $(SRCO) $(LIB) -o $@
 
 $(O_DIR)/%.o: $(C_DIR)/%.c
 	@$(RM) $(NAME)
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 soft:
 	@$(RM) $(NAME)

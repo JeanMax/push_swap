@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 17:22:18 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 06:51:50 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/10 19:21:35 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static void		check_av(char **av, t_env *e)
 	e->stack_s[e->size_max] = END;
 	e->size_a = e->size_max;
 	e->size_b = 0;
-	e->size_max	< 1 ? error(USAGE, USAGE_MSG) : NULL;
+	e->size_max < 1 ? error(USAGE, USAGE_MSG) : NULL;
 	i = 0;
 	j = 0;
 	while (av[++i])
@@ -127,12 +127,8 @@ int				main(int ac, char **av)
 	check_av(av, &e);
 	print_tab(e.stack_a, e.size_a, "Stack A: ", e.debug);
 	print_tab(e.stack_b, e.size_b, "Stack B: ", e.debug);
-	if (algo(&e))
-	{
-		print_tab(e.stack_a, e.size_a, "Stack A: ", e.debug);
-		print_tab(e.stack_b, e.size_b, "Stack B: ", e.debug);
-	}
-	else
+	ft_putendl("");
+	if (!brute(&e))
 		failn(":/");
 	ft_memdel((void *)&(e.stack_a));
 	ft_memdel((void *)&(e.stack_b));
