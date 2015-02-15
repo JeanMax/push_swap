@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 15:11:19 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/11 01:32:02 by mcanal           ###   ########.fr       */
+/*   Created: 2015/02/11 01:19:15 by mcanal            #+#    #+#             */
+/*   Updated: 2015/02/11 01:31:28 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** The strdup() function returns a pointer to a  new  string  which  is  a
-** duplicate  of the string s.  Memory for the new string is obtained with
-** malloc(3), and can be freed with free(3).
+** The strdup() function returns a pointer to a	new	string	which	is	a
+** duplicate	of the string s.	Memory for the new string is obtained with
+** malloc(3), and can be freed with free(3). The copy stops after n characters.
 */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char *ft_strdup(char *src)
+char		*ft_strndup(char *src, size_t n)
 {
-	unsigned int		i;
-	char				*dup;
+	char	*dup;
+	size_t	i;
 
-	i = 0;
-	if (!src)
+	if (!src || !n)
 		return (NULL);
-	while (src[i])
-		i++;
-	dup = (char *)malloc(sizeof(char) * (i + 1));
-	if (!dup)
+	if (!(dup = (char *)malloc(sizeof(char) * (n + 1))))
 		return (NULL);
 	i = 0;
-	while (src[i])
+	while (i < n)
 	{
 		dup[i] = src[i];
 		i++;

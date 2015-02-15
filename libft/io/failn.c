@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 17:38:02 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/05 17:38:21 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/11 21:49:08 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 #include "libft.h"
 
-void	failn(char *s)
+void	*failn(char *s)
 {
 	ft_putendl_fd(s, 2);
+	return (NULL);
 }

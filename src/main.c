@@ -6,13 +6,13 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 17:22:18 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 19:21:35 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 21:35:26 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** yep, this is the main :)
-** mostly checking argv (for flags and error), then launch XXX
+** mostly checking argv (for flags and error), then launch XXX algo
 */
 
 #include "../inc/header.h"
@@ -46,18 +46,14 @@ static t_char	fill_tab(char *s, t_char j, t_env *e)
 
 static void		check_nbr(char *s, t_env *e)
 {
-	t_char		i;
 	char		*tmp;
 
-	i = 0;
-	s += *s == '-' ? 1 : 0;
 	tmp = s;
-	while (*s && ++i)
+	s += *s == '-' ? 1 : 0;
+	while (*s)
 		if (!ft_isdigit((int)*s++))
 			error(USAGE, USAGE_MSG);
-	if (i > 10)
-		error(USAGE, USAGE_MSG);
-	else if (i == 10 && (*tmp > 50 || (*tmp == 50 && *(tmp + 1) > 49)))
+	if (ft_istoobig(tmp))
 		error(USAGE, USAGE_MSG);
 	e->size_max++;
 }

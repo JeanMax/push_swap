@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/09 22:12:18 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/15 21:30:59 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -32,7 +32,7 @@ C_IS =		ft_isalnum.c		ft_isalpha.c		ft_isxdigit.c		\
 			ft_isascii.c		ft_isdigit.c		ft_isprint.c		\
 			ft_islower.c		ft_isupper.c		ft_isblank.c		\
 			ft_iscntrl.c		ft_isgraph.c		ft_isspace.c		\
-			ft_ispunct.c
+			ft_ispunct.c		ft_istoobig.c
 C_LST1 =	ft_lstlast.c		ft_lstdel.c			ft_lstiter.c		\
 			ft_lstadd.c			ft_lstaddlast.c		ft_lstlen.c			\
 			ft_lstat.c			ft_lstisempty.c		ft_lstislast.c		\
@@ -58,7 +58,7 @@ C_STR =		ft_strindex.c		ft_strrindex.c		ft_strcpy.c			\
 			ft_strequ.c			ft_strmap.c			ft_strrchr.c		\
 			ft_striter.c		ft_strmapi.c		ft_strsub.c			\
 			ft_strclr.c			ft_striteri.c		ft_strnequ.c		\
-			ft_itoa.c			ft_strtrim.c
+			ft_itoa.c			ft_strtrim.c		ft_strndup.c
 SRCC =	$(C_EDIT1:%.c=edit/lst1/%.c)		$(C_EDIT2:%.c=edit/lst2/%.c)\
 		$(C_IO:%.c=io/%.c)					$(C_IS:%.c=is/%.c)			\
 		$(C_LST1:%.c=lst1/%.c)				$(C_LST2:%.c=lst2/%.c)		\

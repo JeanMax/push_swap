@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/09 22:12:06 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 21:31:50 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <string.h>
 # include "edit.h"
 
+typedef unsigned char	t_char;
+
 /*
 ** io
 */
@@ -25,8 +27,8 @@ void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl(char const *s);
 void	ft_putendl_fd(char const *s, int fd);
-void	fail(char *s);
-void	failn(char *s);
+void	*fail(char *s);
+void	*failn(char *s);
 void	ft_putnbr(int nbr);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(char const *s);
@@ -55,6 +57,7 @@ int		ft_islower(int c);
 int		ft_isprint(int i);
 int		ft_ispunct(int c);
 int		ft_isspace(int c);
+int		ft_istoobig(char *s);
 int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 
@@ -139,6 +142,7 @@ char	*ft_strmap(char const *s, char (*f)(char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strncat(char *dest, const char *src, size_t n);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
+char	*ft_strndup(char *src, size_t n);
 char	*ft_strnew(size_t size);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 char	*ft_strrchr(const char *s, int c);

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 19:49:30 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 21:41:09 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@
 /*
 ** struct && typedef
 */
-typedef unsigned char	t_char;
 typedef struct s_env	t_env;
 struct		s_env
 {

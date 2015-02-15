@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/10 18:30:19 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/15 21:40:33 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -28,7 +28,7 @@ CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 RM = rm -f
 
-.PHONY: all clean fclean re debug optimize
+.PHONY: all clean fclean zclean re debug optimize
 
 all:
 	@make -C libft
@@ -51,12 +51,15 @@ debug: re
 	@gdb $(NAME)
 
 optimize: re
-	@$(CC) $(CFLAGS) -02 $(SRCO) $(LIB) -o $(NAME)
+	@$(CC) $(CFLAGS) -O2 $(SRCO) $(LIB) -o $(NAME)
 
 clean:
 	@$(RM) $(SRCO)
 
 fclean: clean
 	@$(RM) $(NAME)
+
+zclean: fclean
+	@make -C libft fclean
 
 re: fclean all
