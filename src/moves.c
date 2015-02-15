@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 23:11:02 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 18:28:37 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 21:58:10 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 ** handle the 4 basics moves : swap, push, rotate, reverse
 */
 
-#include "../inc/header.h"
+#include "header.h"
 
 static void		swap(int *tab, t_char size)
 {

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/10 01:58:30 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 19:23:21 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 22:01:23 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 ** algorithm solver (brute force)
 */
 
-#include "../inc/header.h"
+#include "header.h"
 
 void			cpy_itab(int *src, int *dest, t_char len)
 {

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 21:30:59 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/10 19:47:24 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 22:07:26 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 ** printing tab
 */
 
-#include "../inc/header.h"
+#include "header.h"
 
 void			print_tab(int *st, t_char size, char *msg, t_char debug)
 {
@@ -61,28 +61,30 @@ void			print_move(t_char moves, t_char dbg)
 
 static t_char	print_verbose(t_char *moves, t_env *e, size_t i)
 {
-	t_char		*swap;
+	t_char		*m_swap;
+	int			*s_swap;
 
-	swap = moves;
+	m_swap = moves;
+	e->size_a = e->size_max;
+	s_swap = e->stack_a;
+	e->stack_a = e->stack_s;
+	e->size_b = 0;
 	while (*moves != STOP)
 	{
 		move(*moves, e);
-		print_move(*moves, e->debug);
+		print_move(*moves++, e->debug);
 		print_tab(e->stack_a, e->size_a, "\nStack A: ", e->debug);
 		print_tab(e->stack_b, e->size_b, "Stack B: ", e->debug);
 		ft_putendl("");
-		moves++;
 	}
-	moves = swap;
+	moves = m_swap;
 	e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
 	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :\
 		ft_putstr_clr(" moves: ", "y");
 	while (*moves != STOP)
-	{
-		print_move(*moves, e->debug);
-		moves++;
-	}
+		print_move(*moves++, e->debug);
 	ft_putendl("\n");
+	e->stack_a = s_swap;
 	return (TRUE);
 }
 

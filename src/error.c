@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 19:39:48 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/09 22:15:00 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 21:58:27 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 ** error handling
 */
 
-#include "../inc/header.h"
+#include "header.h"
 
 void	error(char error, char *msg)
 {

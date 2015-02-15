@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/15 21:40:33 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/15 21:57:40 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,11 +24,11 @@ SRCC = $(SRC:%.c=$(C_DIR)/%.c)
 SRCO = $(SRC:%.c=$(O_DIR)/%.o)
 LIB = libft/libft.a
 INC = inc/header.h
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -I./inc/
 CC = gcc
 RM = rm -f
 
-.PHONY: all clean fclean zclean re debug optimize
+.PHONY: all clean fclean zclean re brute debug optimize
 
 all:
 	@make -C libft
@@ -63,3 +63,5 @@ zclean: fclean
 	@make -C libft fclean
 
 re: fclean all
+
+brute: zclean all

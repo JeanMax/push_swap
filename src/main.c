@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 17:22:18 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/15 21:35:26 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 22:03:45 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 ** mostly checking argv (for flags and error), then launch XXX algo
 */
 
-#include "../inc/header.h"
+#include "header.h"
 
 static t_char	fill_tab(char *s, t_char j, t_env *e)
 {
