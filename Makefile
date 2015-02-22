@@ -6,17 +6,11 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/15 21:57:40 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/22 18:26:51 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-#$@	Le nom de la cible
-#$<	Le nom de la première dépendance
-#$^	La liste des dépendances
-#$?	La liste des dépendances plus récentes que la cible
-#$*	Le nom du fichier sans suffixe
-
-SRC = main.c error.c print.c moves.c brute.c
+SRC = main.c error.c print.c moves.c brute.c soft.c
 NAME = push_swap
 O_DIR = obj
 C_DIR = src

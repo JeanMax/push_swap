@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 23:11:02 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/15 21:58:10 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/22 21:16:43 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void		rot(int *tab, t_char size)
 static void		rev(int *tab, t_char size)
 {
 	int			swap;
-	t_char		i;
+	int			i;
 
 	if (size < 2)
 		return ;

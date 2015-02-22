@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/15 21:41:09 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/22 21:45:00 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define HEADER_H
 # define TRUE 1
 # define FALSE 0
-# define STOP_BRUTE 8
-# define MAX_MOVES 512
+# define STOP_BRUTE 6
+# define MAX_MOVES 1000000
 # define QUIET_WHITE 0
 # define VERBO_WHITE 1
 # define DEBUG_WHITE 2
@@ -42,8 +42,6 @@
 # define RR 9
 # define RRR 10
 # define STOP 11
-# define END 42
-# define DEBUG { ft_putstr_clr(__func__, "r"); ft_putstr_clr(" (", "r"); ft_putstr_clr(__FILE__, "red"); ft_putstr_clr(") - line: ", "r"); ft_putnbr_clr(__LINE__, "r"); ft_putendl(""); } //debug
 
 /*
 ** include
@@ -60,21 +58,24 @@ struct		s_env
 	int		*stack_a;
 	int		*stack_b;
 	int		*stack_s;
-	t_char	size_max;
-	t_char	size_a;
-	t_char	size_b;
+	int		*stack_t;
+	int		size_max;
+	int		size_a;
+	int		size_b;
 	t_char	debug;
 };
 
 /*
 ** prototypes
 */
+void		solve_stack(t_env *e);
 void		error(char error, char *msg);
-void		print_tab(int *st, t_char size, char *msg, t_char debug);
+void		print_tab(int *st, int size, char *msg, t_char debug);
 t_char		print_moves(t_char *moves, t_env *e);
 void		print_move(t_char moves, t_char dbg);
 void		move(t_char move, t_env *e);
 t_char		brute(t_env *e);
+t_char		soft(t_env *e);
 void		cpy_itab(int *src, int *dest, t_char len);
 
 #endif

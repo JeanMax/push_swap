@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 19:39:48 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/15 21:58:27 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/22 16:38:52 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error(char error, char *msg)
 	failn("Error");
 	if (error == USAGE)
 	{
-		failn("Usage: ./push_swap [-cvd] [int]...");
+		failn("Usage: ./push_swap -[cvd] [int ...]");
 		failn(msg);
 	}
 	else if (error == MALLOC)

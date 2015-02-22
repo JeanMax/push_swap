@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 21:30:59 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/15 22:07:26 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/22 21:15:24 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 #include "header.h"
 
-void			print_tab(int *st, t_char size, char *msg, t_char debug)
+void			print_tab(int *st, int size, char *msg, t_char debug)
 {
-	t_char		c;
+	int			c;
 
 	if (!st)
 		return ;
