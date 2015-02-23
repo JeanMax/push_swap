@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/10 01:58:30 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 07:05:32 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 09:21:36 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "header.h"
 
-void			cpy_itab(int *src, int *dest, t_char len)
+void			cpy_itab(int *src, int *dest, int len)
 {
 	while (len)
 	{

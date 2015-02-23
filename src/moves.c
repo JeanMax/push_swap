@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 23:11:02 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/22 21:16:43 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 09:08:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "header.h"
 
-static void		swap(int *tab, t_char size)
+static void		swap(int *tab, int size)
 {
 	int			swap;
 
@@ -45,7 +45,7 @@ static void		push(t_env *e, t_char am_i_a)
 	}
 }
 
-static void		rot(int *tab, t_char size)
+static void		rot(int *tab, int size)
 {
 	int			swap;
 
@@ -60,7 +60,7 @@ static void		rot(int *tab, t_char size)
 	tab[0] = swap;
 }
 
-static void		rev(int *tab, t_char size)
+static void		rev(int *tab, int size)
 {
 	int			swap;
 	int			i;

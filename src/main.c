@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 17:22:18 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 06:25:43 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 09:44:24 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include "header.h"
 
-static t_char	fill_tab(char *s, int j, t_env *e)
+static int		fill_tab(char *s, int j, t_env *e)
 {
 	char		*tmp;
 	int			i;
@@ -140,11 +140,8 @@ int				main(int ac, char **av)
 		ft_putendl("");
 	}
 	if (!brute(&e))
-	{
-		solve_stack(&e);
 		if (!soft(&e))
 			failn(":/");
-	}
 	ft_memdel((void *)&(e.stack_a));
 	ft_memdel((void *)&(e.stack_b));
 	ft_memdel((void *)&(e.stack_s));

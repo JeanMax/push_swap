@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 08:26:02 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 09:42:04 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define HEADER_H
 # define TRUE 1
 # define FALSE 0
-# define STOP_BRUTE 5
+# define STOP_BRUTE 4
 //# define MAX_MOVES 1000000
 # define QUIET_WHITE 0
 # define VERBO_WHITE 1
@@ -68,7 +68,6 @@ struct		s_env
 /*
 ** prototypes
 */
-void		solve_stack(t_env *e);
 void		error(char error, char *msg);
 void		print_tab(int *st, int size, char *msg, t_char debug);
 t_char		print_moves(t_char *moves, t_env *e);
@@ -76,6 +75,6 @@ void		print_move(t_char moves, t_char dbg);
 void		move(t_char move, t_env *e);
 t_char		brute(t_env *e);
 t_char		soft(t_env *e);
-void		cpy_itab(int *src, int *dest, t_char len);
+void		cpy_itab(int *src, int *dest, int len);
 
 #endif
