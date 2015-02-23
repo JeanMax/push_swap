@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/10 01:58:30 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/22 21:29:35 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 07:05:32 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ static t_char	brute_loop(t_char len, t_char *moves, t_env *e)
 
 t_char			brute(t_env *e)
 {
-	t_char		moves[MAX_MOVES];
+	t_char		moves[STOP_BRUTE + 1];
 	t_char		len;
 
 	len = 0;
-	ft_bzero((void *)moves, MAX_MOVES);
+	ft_bzero((void *)moves, STOP_BRUTE + 1);
 	if (is_solved(e))
 		return (TRUE);
 	while (++len <= STOP_BRUTE)

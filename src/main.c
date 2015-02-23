@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 17:22:18 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/22 22:00:47 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 06:25:43 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ static void		check_flag(char *s, t_env *e)
 	t_char		clr;
 
 	if (!*s)
-		return ;
+		return (error(USAGE, USAGE_MSG));
 	clr = -1;
 	while (s[++clr])
 		if (ft_isdigit((int)s[clr]))
 			return (check_nbr(s, e));
 	s++;
+	!*s ? error(USAGE, USAGE_MSG) : NULL;
 	clr = e->debug >= QUIET_COLOR ? QUIET_COLOR : 0;
 	e->debug -= clr;
 	if (ft_strchr(s, 'v') && e->debug != DEBUG_WHITE)
@@ -132,9 +133,12 @@ int				main(int ac, char **av)
 	e.debug = QUIET_WHITE;
 	ac == 1 ? error(USAGE, USAGE_MSG) : NULL;
 	check_av(av, &e);
-	print_tab(e.stack_a, e.size_a, "Stack A: ", e.debug);
-	print_tab(e.stack_b, e.size_b, "Stack B: ", e.debug);
-	ft_putendl("");
+	if (e.debug != QUIET_WHITE && e.debug != QUIET_COLOR)
+	{
+		print_tab(e.stack_a, e.size_a, "Stack A: ", e.debug);
+		print_tab(e.stack_b, e.size_b, "Stack B: ", e.debug);
+		ft_putendl("");
+	}
 	if (!brute(&e))
 	{
 		solve_stack(&e);
@@ -144,5 +148,6 @@ int				main(int ac, char **av)
 	ft_memdel((void *)&(e.stack_a));
 	ft_memdel((void *)&(e.stack_b));
 	ft_memdel((void *)&(e.stack_s));
+	ft_memdel((void *)&(e.stack_t));
 	return (0);
 }

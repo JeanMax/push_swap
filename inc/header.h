@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/22 21:45:00 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 08:26:02 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define HEADER_H
 # define TRUE 1
 # define FALSE 0
-# define STOP_BRUTE 6
-# define MAX_MOVES 1000000
+# define STOP_BRUTE 5
+//# define MAX_MOVES 1000000
 # define QUIET_WHITE 0
 # define VERBO_WHITE 1
 # define DEBUG_WHITE 2

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 21:30:59 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/22 21:15:24 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 06:36:51 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,30 @@
 */
 
 #include "header.h"
+
+void			solve_stack(t_env *e)
+{
+	int		i;
+	int		j;
+	int		swap;
+
+	j = e->size_max - 1;
+	while (j >= 0)
+	{
+		i = j - 1;
+		while (i >= 0)
+		{
+			if (e->stack_t[i] < e->stack_t[j])
+			{
+				swap = e->stack_t[j];
+				e->stack_t[j] = e->stack_t[i];
+				e->stack_t[i] = swap;
+			}
+			i--;
+		}
+		j--;
+	}
+}
 
 void			print_tab(int *st, int size, char *msg, t_char debug)
 {
@@ -36,27 +60,27 @@ void			print_tab(int *st, int size, char *msg, t_char debug)
 void			print_move(t_char moves, t_char dbg)
 {
 	if (moves == 0)
-		dbg < QUIET_COLOR ? ft_putstr("sa ") : ft_putstr_clr("sa ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("sa") : ft_putstr_clr("sa", "r");
 	else if (moves == 1)
-		dbg < QUIET_COLOR ? ft_putstr("ra ") : ft_putstr_clr("ra ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("ra") : ft_putstr_clr("ra", "r");
 	else if (moves == 2)
-		dbg < QUIET_COLOR ? ft_putstr("rra ") : ft_putstr_clr("rra ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("rra") : ft_putstr_clr("rra", "r");
 	else if (moves == 3)
-		dbg < QUIET_COLOR ? ft_putstr("pa ") : ft_putstr_clr("pa ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("pa") : ft_putstr_clr("pa", "r");
 	else if (moves == 4)
-		dbg < QUIET_COLOR ? ft_putstr("sb ") : ft_putstr_clr("sb ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("sb") : ft_putstr_clr("sb", "r");
 	else if (moves == 5)
-		dbg < QUIET_COLOR ? ft_putstr("rb ") : ft_putstr_clr("rb ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("rb") : ft_putstr_clr("rb", "r");
 	else if (moves == 6)
-		dbg < QUIET_COLOR ? ft_putstr("rrb ") : ft_putstr_clr("rrb ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("rrb") : ft_putstr_clr("rrb", "r");
 	else if (moves == 7)
-		dbg < QUIET_COLOR ? ft_putstr("pb ") : ft_putstr_clr("pb ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("pb") : ft_putstr_clr("pb", "r");
 	else if (moves == 8)
-		dbg < QUIET_COLOR ? ft_putstr("ss ") : ft_putstr_clr("ss ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("ss") : ft_putstr_clr("ss", "r");
 	else if (moves == 9)
-		dbg < QUIET_COLOR ? ft_putstr("rr ") : ft_putstr_clr("rr ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("rr") : ft_putstr_clr("rr", "r");
 	else
-		dbg < QUIET_COLOR ? ft_putstr("rrr ") : ft_putstr_clr("rrr ", "r");
+		dbg < QUIET_COLOR ? ft_putstr("rrr") : ft_putstr_clr("rrr", "r");
 }
 
 static t_char	print_verbose(t_char *moves, t_env *e, size_t i)
@@ -71,19 +95,18 @@ static t_char	print_verbose(t_char *moves, t_env *e, size_t i)
 	e->size_b = 0;
 	while (*moves != STOP)
 	{
-		move(*moves, e);
-		print_move(*moves++, e->debug);
+		move(*moves, e), print_move(*moves++, e->debug);
 		print_tab(e->stack_a, e->size_a, "\nStack A: ", e->debug);
-		print_tab(e->stack_b, e->size_b, "Stack B: ", e->debug);
-		ft_putendl("");
+		print_tab(e->stack_b, e->size_b, "Stack B: ", e->debug), ft_putendl("");
 	}
 	moves = m_swap;
 	e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
-	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :\
+	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :	\
 		ft_putstr_clr(" moves: ", "y");
-	while (*moves != STOP)
-		print_move(*moves++, e->debug);
-	ft_putendl("\n");
+	while (*(moves + 1) != STOP)
+		print_move(*moves, e->debug), ft_putchar(' '), moves++;
+	print_move(*moves, e->debug), ft_putendl("");
+	ft_putendl("");
 	e->stack_a = s_swap;
 	return (TRUE);
 }
@@ -97,19 +120,19 @@ t_char			print_moves(t_char *moves, t_env *e)
 		i++;
 	if (e->debug == VERBO_WHITE || e->debug == VERBO_COLOR)
 		return (print_verbose(moves, e, i));
-	if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
+	else if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
+	{
 		ft_putendl("");
-	e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
-	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :\
-		ft_putstr_clr(" moves: ", "y");
-	while (*moves != STOP)
-	{
-		print_move(*moves, e->debug);
-		moves++;
+		e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
+		e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :	\
+			ft_putstr_clr(" moves: ", "y");
 	}
-	ft_putendl("\n");
-	if (e->debug != DEBUG_WHITE && e->debug != DEBUG_COLOR)
+	while (*(moves + 1) != STOP)
+		print_move(*moves, e->debug), ft_putchar(' '), moves++;
+	print_move(*moves, e->debug), ft_putendl("");
+	if (e->debug == VERBO_WHITE || e->debug == VERBO_COLOR)
 	{
+		ft_putendl("");
 		print_tab(e->stack_a, e->size_a, "Stack A: ", e->debug);
 		print_tab(e->stack_b, e->size_b, "Stack B: ", e->debug);
 	}
