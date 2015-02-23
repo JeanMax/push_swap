@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 21:30:59 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 09:39:12 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 22:57:27 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static t_char	print_verbose(t_char *moves, t_env *e, size_t i)
 	}
 	moves = m_swap;
 	e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
-	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :	\
+	e->debug < QUIET_COLOR ? ft_putstr(" moves: ") : \
 		ft_putstr_clr(" moves: ", "y");
 	while (*(moves + 1) != STOP)
 		print_move(*moves, e->debug), moves++;
@@ -122,16 +122,17 @@ t_char			print_moves(t_char *moves, t_env *e)
 		i++;
 	if (e->debug == VERBO_WHITE || e->debug == VERBO_COLOR)
 		return (print_verbose(moves, e, i));
-	else if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR)
-	{
-		ft_putendl("");
-		e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
-		e->debug < QUIET_COLOR ? ft_putstr(" moves: ") :	\
-			ft_putstr_clr(" moves: ", "y");
-	}
 	while (*(moves + 1) != STOP)
 		print_move(*moves, e->debug), moves++;
 	print_last_move(*moves, e->debug), ft_putendl("");
+	if (e->debug == DEBUG_WHITE || e->debug == DEBUG_COLOR || \
+		e->debug == COUNT_WHITE || e->debug == COUNT_COLOR)
+	{
+		ft_putendl("");
+		e->debug < QUIET_COLOR ? ft_putnbr(i) : ft_putnbr_clr(i, "y");
+		e->debug < QUIET_COLOR ? ft_putendl(" moves!") : \
+			ft_putendl_clr(" moves!", "y");
+	}
 	if (e->debug == VERBO_WHITE || e->debug == VERBO_COLOR)
 	{
 		ft_putendl("");

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 09:42:04 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 23:00:24 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@
 # define HEADER_H
 # define TRUE 1
 # define FALSE 0
-# define STOP_BRUTE 4
-//# define MAX_MOVES 1000000
+# define STOP_BRUTE 5
 # define QUIET_WHITE 0
-# define VERBO_WHITE 1
-# define DEBUG_WHITE 2
-# define QUIET_COLOR 3
-# define VERBO_COLOR 4
-# define DEBUG_COLOR 5
-# define USAGE_MSG "-c: color mod\n-v: verbose mod\n-d: debug mod"
+# define COUNT_WHITE 1
+# define VERBO_WHITE 2
+# define DEBUG_WHITE 3
+# define QUIET_COLOR 4
+# define COUNT_COLOR 5
+# define VERBO_COLOR 6
+# define DEBUG_COLOR 7
+# define USAGE_MSG "-c: color\n-v: verbose\n-d: debug\n-n: count"
 # define DOBLE_MSG "You can't give the same number twice."
 # define USAGE 0
 # define MALLOC 1

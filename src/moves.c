@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 23:11:02 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 09:08:42 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 22:15:54 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ static void		rot(int *tab, int size)
 
 	if (size < 2)
 		return ;
-	swap = tab[size - 1];
+	tab += size - 1;
+	swap = *tab;
 	while (size > 1)
 	{
-		tab[size - 1] = tab[size - 2];
+		*tab = *(tab - 1);
 		size--;
+		tab--;
 	}
-	tab[0] = swap;
+	*tab = swap;
 }
 
 static void		rev(int *tab, int size)
@@ -67,15 +69,16 @@ static void		rev(int *tab, int size)
 
 	if (size < 2)
 		return ;
-	swap = tab[0];
+	swap = *tab;
 	size--;
 	i = 0;
 	while (i < size)
 	{
-		tab[i] = tab[i + 1];
+		*tab = *(tab + 1);
 		i++;
+		tab++;
 	}
-	tab[i] = swap;
+	*tab = swap;
 }
 
 void			move(t_char move, t_env *e)

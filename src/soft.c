@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/22 18:03:58 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 09:39:49 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/23 22:46:28 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,29 @@
 
 #include "header.h"
 
-static void		solve_stack(t_env *e)
+static void		solve_stack(int *cmp1, int j)
 {
 	int		i;
-	int		j;
 	int		swap;
+	int		*cmp2;
 
-	j = e->size_max - 1;
+	cmp1 += j;
 	while (j >= 0)
 	{
 		i = j - 1;
+		cmp2 = cmp1 - 1;
 		while (i >= 0)
 		{
-			if (e->stack_t[i] < e->stack_t[j])
+			if (*cmp2 < *cmp1)
 			{
-				swap = e->stack_t[j];
-				e->stack_t[j] = e->stack_t[i];
-				e->stack_t[i] = swap;
+				swap = *cmp1;
+				*cmp1 = *cmp2;
+				*cmp2 = swap;
 			}
+			cmp2--;
 			i--;
 		}
+		cmp1--;
 		j--;
 	}
 }
@@ -104,9 +107,9 @@ t_char			soft(t_env *e)
 	t_char		*m;
 	t_char		*m_swap;
 
-	if (!(m = (t_char *)malloc((sizeof(t_char) * e->size_max * 1000))))
+	if (!(m = (t_char *)malloc((sizeof(t_char) * e->size_max * 5000))))
 		error(MALLOC, "moves");
-	solve_stack(e);
+	solve_stack(e->stack_t, e->size_max - 1);
 	m_swap = m;
 	soft_loop(e, &m, e->stack_t + e->size_max - 1, e->stack_a + e->size_a - 1);
 	while (e->size_b > 0)
