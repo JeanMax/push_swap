@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 23:00:24 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/03/06 18:52:55 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@
 # define COUNT_COLOR 5
 # define VERBO_COLOR 6
 # define DEBUG_COLOR 7
-# define USAGE_MSG "-c: color\n-v: verbose\n-d: debug\n-n: count"
+# define USAGE_MSG "-c: color\n-v: verbose\n-d: debug\n-n: count\n-s: subject"
 # define DOBLE_MSG "You can't give the same number twice."
 # define USAGE 0
 # define MALLOC 1
+# define SUBJECT 2
+# define SUBJECT_MSG "Moves:"
 # define SA 0
 # define RA 1
 # define RRA 2

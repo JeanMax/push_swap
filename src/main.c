@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 17:22:18 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/23 23:02:37 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/03/06 18:55:34 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@ static void		check_flag(char *s, t_env *e)
 	e->debug = ft_strchr(s, 'd') ? DEBUG_WHITE : e->debug;
 	e->debug += ft_strchr(s, 'c') ? QUIET_COLOR : 0;
 	e->debug += e->debug < QUIET_COLOR ? clr : 0;
+	ft_strchr(s, 's') ? error(SUBJECT, SUBJECT_MSG) : NULL;
 	while (*s)
 	{
-		if (*s != 'v' && *s != 'd' && *s != 'c' && *s != 'n')
+		if (*s != 'v' && *s != 'd' && *s != 'c' && *s != 'n' && *s != 's')
 			error(USAGE, USAGE_MSG);
 		s++;
 	}
